@@ -1,0 +1,59 @@
+name: Pages
+
+on:
+  push:
+    branches: [ "master" ]
+  release:
+    types: [released]
+  workflow_dispatch:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+  
+  build:
+    needs: check
+    runs-on: ubuntu-latest
+    if: ${{ startsWith(github.event.head_commit.message, 'pages') || github.event_name == 'release' || github.event_name == 'workflow_dispatch' }}
+
+    permissions:
+      pages: write
+      id-token: write
+
+    concurrency:
+      group: 'pages'
+      cancel-in-progress: false
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+    - uses: actions/checkout@v4
+  
+    - name: Use pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: latest
+        run_install: false
+
+    - name: Use Node.js 22.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.x'
+        cache: 'pnpm'
+
+    - run: pnpm install
+    - run: pnpm run build:pages
+
+    - name: Upload build artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        name: build
+        path: dist/
+
+    - name: Deploy to GitHub Pages
+      uses: actions/deploy-pages@v4
+      id: deployment
+      with:
+        artifact_name: build
