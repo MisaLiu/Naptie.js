@@ -1,6 +1,9 @@
 import { encodeByte, encodeDouble, encodeTriple } from './utils/encode';
 import { decodeByte, decodeDouble, decodeTriple } from './utils/decode';
 
+/**
+ * Encode everything into `Naptie`
+ */
 export const encode = (arr: Uint8Array) => {
   if (!(arr instanceof Uint8Array)) {
     throw TypeError('argument is not an instance of Uint8Array');
@@ -26,6 +29,9 @@ export const encode = (arr: Uint8Array) => {
   return result;
 };
 
+/**
+ * Decode things from `Naptie`
+ */
 export const decode = (str: string) => {
   if (str.length & 1) throw Error('Invalid length');
 
