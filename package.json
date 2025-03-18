@@ -24,7 +24,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build"
+    "build": "tsc && vite build",
+    "build:pages": "tsc && vite build --config vite.config.pages.ts"
   },
   "devDependencies": {
     "typescript": "~5.7.3",
