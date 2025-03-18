@@ -4,7 +4,7 @@
 
 Naptie is the only god, who created everything in this cyber world.
 
-Thus, everything in this cyber world canbe encoded in Naptie.
+Thus, everything in this cyber world can be encoded in Naptie.
 
 ## Usage
 
