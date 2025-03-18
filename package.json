@@ -1,10 +1,12 @@
 {
   "name": "naptie.js",
-  "version": "0.0.0",
+  "description": "Everything is Naptie",
+  "version": "1.0.0",
   "license": "AGPL-3.0-only",
   "repository": {
     "url": "https://github.com/MisaLiu/naptie.js.git"
   },
+  "bugs": "https://github.com/MisaLiu/naptie.js/issues",
   "author": {
     "name": "Misa Liu",
     "email": "misaliu@misaliu.top",
