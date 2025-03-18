@@ -5,19 +5,11 @@ import { divisior } from './math';
 export const encodeByte = (byte: number) => {
   if (byte > 0xFF) throw Error('Byte overflow');
 
-  if (byte > 0xAA) {
-    const _byte = byte & 0xAA;
+  if (byte > 0x7F) {
+    const _byte = byte & 0x7F;
     return (
       chars.i[divisior(_byte, size.e)] + 
       chars.e[_byte % size.e]
-    );
-  }
-  
-  if (byte > 0x55) {
-    const _byte = byte & 0x55;
-    return (
-      chars.p[divisior(_byte, size.t)] + 
-      chars.t[_byte % size.t]
     );
   }
 
