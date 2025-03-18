@@ -12,8 +12,7 @@
   },
   "type": "module",
   "files": [
-    "dist",
-    "index.d.ts"
+    "dist"
   ],
   "main": "./dist/naptie.umd.cjs",
   "module": "./dist/naptie.js",

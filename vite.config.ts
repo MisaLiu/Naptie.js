@@ -6,12 +6,15 @@ export default defineConfig({
     lib: {
       entry: './lib/main.ts',
       name: 'naptie.js',
+      formats: ['es', 'umd'],
       fileName: 'naptie',
     },
   },
   plugins: [
     dts({
       rollupTypes: true,
+      include: [ './lib/**/*' ],
+      exclude: [ './src/**/*' ],
     }),
   ],
 });
