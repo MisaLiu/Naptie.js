@@ -3,8 +3,6 @@ name: Pages
 on:
   push:
     branches: [ "master" ]
-  release:
-    types: [released]
   workflow_dispatch:
 
 jobs:
