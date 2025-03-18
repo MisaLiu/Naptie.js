@@ -1,23 +1,19 @@
-import './style.css'
-import typescriptLogo from './typescript.svg'
-import { setupCounter } from '../lib/main'
+import * as Naptie from '../lib/main';
+import './style.css';
 
-document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://www.typescriptlang.org/" target="_blank">
-      <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
-    </a>
-    <h1>Vite + TypeScript</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
-  </div>
-`
+const qs = (selector: string) => document.querySelector(selector);
+const encoder = new TextEncoder();
+const decoder = new TextDecoder('utf-8');
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
+window.addEventListener('load', () => {
+  const encodeDom = qs('#textarea-encode')! as HTMLTextAreaElement;
+  const decodeDom = qs('#textarea-decode')! as HTMLTextAreaElement;
+
+  encodeDom.addEventListener('input', () => {
+    decodeDom.value = Naptie.encode(encoder.encode(encodeDom.value));
+  });
+
+  decodeDom.addEventListener('input', () => {
+    encodeDom.value = decoder.decode(Naptie.decode(decodeDom.value));
+  });
+});
