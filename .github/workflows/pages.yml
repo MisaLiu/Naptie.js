@@ -8,11 +8,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  check:
-    runs-on: ubuntu-latest
-  
   build:
-    needs: check
     runs-on: ubuntu-latest
     if: ${{ startsWith(github.event.head_commit.message, 'pages') || github.event_name == 'release' || github.event_name == 'workflow_dispatch' }}
 
