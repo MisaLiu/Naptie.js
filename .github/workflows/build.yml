@@ -1,0 +1,35 @@
+name: Build
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: latest
+        run_install: false
+
+    - name: Use Node.js 22.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: '22.x'
+        cache: 'pnpm'
+
+    - run: pnpm install
+    - run: pnpm run build
+
+    - name: Upload build artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: build
+        path: dist/
