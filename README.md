@@ -33,4 +33,4 @@ You can try it now at [GitHub Pages](https://misaliu.github.io/Naptie.js/).
 ## Thanks
 
 * Naptie: The God, speak no more.
-* [RCNB.js](https://github.com/MisaLiu/Naptie.js): The inspiration
+* [RCNB.js](https://github.com/rcnbapp/RCNB.js): The inspiration
